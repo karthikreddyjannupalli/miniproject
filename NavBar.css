@@ -1,0 +1,28 @@
+.logo{
+    margin-left: 0%;
+    margin-top: 0%;
+width: 20%;
+float: left;
+}
+.navItems{
+    height: 80px;
+}
+.menu{
+    text-decoration: none;
+float: right
+}
+a{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    color: black
+}
+li a:hover{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color: darkslategray
+}
+li{ 
+    list-style-type: none;
+    padding-right: 50px;
+    float: left;
+    text-decoration: none;
+}
