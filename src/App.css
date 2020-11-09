@@ -28,11 +28,162 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.logo{
+  margin-left: 0%;
+  margin-top: -0.5%;
+width: 15%;
+float: left;
 }
+.navItems{
+  height: 80px;
+}
+.navi{
+  background-color: lightgrey;
+}
+.menu{
+  text-decoration: none;
+float: right
+}
+.menu a{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: black;
+}
+.menu li a:hover{
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+color: darkslategray
+}
+.menu li{ 
+  list-style-type: none;
+  padding-right: 20px;
+  margin-top: 5px;
+  float: left;
+  text-decoration: none;
+}
+
+.nav-links{
+  align-self: auto;
+}
+
+.custom-tag {
+  max-width: 100%;
+  height: 350px;
+  background: black;
+}
+
+/* #####################END OF NAVBAR#################### */
+/* #####################START OF SIGNUP################## */
+
+input[type="password"]{
+  height: 100%;
+  }
+  input{
+      margin-top: 30px;
+      width: 240px;
+      margin-left: 0px;
+      height: 25px;
+      box-shadow: rgba(0,0, 0, 2.1);
+  }
+  
+  input[type=password]{
+      width: 240px;
+      margin-top: 20px;
+      height: 25px;
+  }
+  .grbut{
+  width: 280px;
+  margin-left: 50px;
+  }
+  input[type="checkbox"]{
+      margin-left: 0px;
+      margin-top: 20px;
+      width: 30px;
+      width: 40px;
+  }
+  label{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      padding: 0px;
+      font-size: 20px;
+  }
+  #register{
+  top: 40px;
+      position: absolute;
+      left: -330px;
+      transition: transform 1s;
+      height: 80px;
+  }
+  .page{
+      align-items: center;
+      display: flexbox;
+      width: 100%;
+      height: 560px;
+      background-image: url(./cover.png);
+      background-size: 60%;
+      background-position: left;
+      background-position-y: 40%;
+      background-repeat: no-repeat;
+      background-color: ghostwhite;
+      margin: 0%;
+  }
+  .gbut{
+      margin-left: 60px;
+      margin-top: 40px;
+  }
+  .signel{
+      box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
+      margin-top: 100px;
+      margin-right: 130px;
+      position: absolute;
+      width: 30%;
+      height: 500px;
+      text-align: center;
+      border-left: 6px solid royalblue;    
+  }
+  #login{
+      margin-top: 130px;
+  left: 0;
+  transition: transform 1s;
+  }
+  .signel{
+      position: absolute;
+      margin-top: 15px;
+      height: 530px;
+      margin-left: 800px;
+      overflow: hidden;
+  
+  }
+  .signel span{
+      cursor: pointer;
+      font-weight: bold;
+      font-family: sans-serif;
+      padding: 0 10px;
+      width: 100px;
+  }
+  h1{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 20px;
+  position: absolute;
+  margin-left: 65px;
+  margin-top: 10px;
+  color: dodgerblue;
+  }
+  .btnbox{
+      position: absolute;
+      margin-left: 110px;
+      margin-top: 20px;
+      border-radius: 20px;
+  }
+  #ind{
+      width: 60px;
+      border: none;
+      margin-left: 44px;
+      background: rgb(73, 100, 180);
+      height: 3px;
+      margin-top: 4px;
+      transform: translate(-43px);
+      transition: transform 1s;
+  }
+
+  /* ###########################END OF SIGNUP##################### */
+  /* ########################LEADERBOARD ######################### */
+  
