@@ -9,7 +9,7 @@ function SignUp(){
         <form id="login">
         <div><input placeholder="username" type="username"/></div>
         <div><input placeholder="password" type="password"/></div>
-        <div className="gbut"><GoogleLoginButton style={{width:250},{backgroundColor:"#db4437"}} activeStyle={{backgroundColor:"#3b5998"}}/></div>
+        <div className="gbut"><GoogleLoginButton style={{width:200},{backgroundColor:"#db4437"}} activeStyle={{backgroundColor:"#3b5998"}}/></div>
       </form>
        <form id="register">
             <input type="text"placeholder="Name"/>
@@ -23,7 +23,7 @@ function SignUp(){
         <div><input placeholder="password" type="password"/></div>
     <input type="checkbox"/><label>Student</label>
     <input type="checkbox"/><label>Faculty</label>
-    <div className="grbut"><GoogleLoginButton className="reg"text="Register with Google"style={{width:250},{backgroundColor:"#db4437"}} activeStyle={{backgroundColor:"#3b5998"}}/></div>
+    <div className="grbut"><GoogleLoginButton className="reg"text="Register with Google"style={{width:230,backgroundColor:"#db4437"}} activeStyle={{backgroundColor:"#3b5998"}}/></div>
 </form>
        </div>
       

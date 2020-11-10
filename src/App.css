@@ -30,13 +30,10 @@
 
 
 .logo{
-  margin-left: 0%;
+  margin-left: -3%;
   margin-top: -0.5%;
-width: 15%;
-float: left;
-}
-.navItems{
-  height: 80px;
+  width: 20%;
+  float: left;
 }
 .navi{
   background-color: lightgrey;
@@ -131,11 +128,9 @@ input[type="password"]{
   }
   .signel{
       box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.3);
-      margin-top: 100px;
-      margin-right: 130px;
-      position: absolute;
+      position: relative;
       width: 30%;
-      height: 500px;
+      height: 475px;
       text-align: center;
       border-left: 6px solid royalblue;    
   }

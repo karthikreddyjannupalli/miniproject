@@ -59,16 +59,16 @@ class LeaderboardMain extends React.Component {
     setTimeout(
       () =>
         this.update([
-          { userId: 3405462, userName: "LiMiTx", earnings: 1000 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
-          { userId: 203, userName: "bean", earnings: 500 },
+          { userId: 3405462, userName: "student1", earnings: 1000 },
+          { userId: 203, userName: "student2", earnings: 500 },
+          { userId: 203, userName: "student3", earnings: 500 },
+          { userId: 203, userName: "student4", earnings: 500 },
+          { userId: 203, userName: "student5", earnings: 500 },
+          { userId: 203, userName: "student6", earnings: 500 },
+          { userId: 203, userName: "student7", earnings: 500 },
+          { userId: 203, userName: "student8", earnings: 500 },
+          { userId: 203, userName: "student9", earnings: 500 },
+          { userId: 203, userName: "student10", earnings: 500 },
         ]),
       500
     );
