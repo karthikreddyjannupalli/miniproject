@@ -1,11 +1,10 @@
 import React from 'react';
 import ControlledCarousel from '../components/Corosel';
 function Home(props){
-    return (
+return (
         <div>
-            <ControlledCarousel />
+        <ControlledCarousel />
         </div>
-    );
+);
 }
-
 export default Home;
