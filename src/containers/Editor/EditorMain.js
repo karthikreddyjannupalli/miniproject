@@ -10,7 +10,6 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Dialog, Grid } from "@material-ui/core";
 import { Col, Row } from "reactstrap";
 import { TextArea } from "semantic-ui-react";
-
 var properties = require("../../properties.json");
 
 const RenderEditor = Loadable({
@@ -56,7 +55,7 @@ class Editor extends Component {
       showGutter: true,
       showPrintMargin: false,
       highlightActiveLine: true,
-      checked: true,
+      checked: false,
       assignmentStatus: "",
       expected: "",
       actual: "",
@@ -82,7 +81,6 @@ class Editor extends Component {
     this.updateCheck = this.updateCheck.bind(this);
     this.changeTestCases = this.changeTestCases.bind(this);
   }
-
   changeTestCases(event) {
     this.setState({
       testcases: event.target.value,
@@ -127,7 +125,7 @@ class Editor extends Component {
   updateCheck() {
     this.setState((oldState) => {
       return {
-        checked: !oldState.checked,
+        checked: !(oldState.checked),
       };
     });
   }
@@ -307,7 +305,7 @@ class Editor extends Component {
       buffer.push(
         <TextArea
           key={1}
-          placeholder="Give your input seperated by a space or use new line"
+          placeholder="Enter Your Custom Input(Separated by space and newline) "
           rows="10"
           cols="40"
           className="testcases"
@@ -320,9 +318,11 @@ class Editor extends Component {
   }
   showCheckBoxAndCompile = () => {
     var buffer = [];
+    let styles={backgroundColor:"#3a59a2"}
     if (typeof this.props.state === "undefined") {
       buffer.push(
-        <div className="Editor" key={1}>
+        <div className="Editor" style={styles} key={1}>
+          <h1 style={{fontSize:70,color:"#ffffff",fontFamily:"Gill Sans, Gill Sans MT, Calibri, sans-serif",marginLeft:0}}>CODEX EDITOR</h1><br/><br/><br/><hr style={{color:"black"}}/>
           <RenderEditor
             value={this.state.value}
             theme={this.state.theme}
@@ -343,7 +343,7 @@ class Editor extends Component {
                 <Checkbox
                   label="Test Against Custom Input"
                   checked={this.state.checked}
-                  onCheck={this.updateCheck}
+                  onClick={this.updateCheck}
                   labelStyle={{ color: "#30b55b" }}
                   style={{ maxWidth: 250 }}
                 />
