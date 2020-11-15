@@ -106,7 +106,7 @@ class LeaderboardMain extends React.Component {
   }
 
   render() {
-    return <Leaderboard title="Leaderboard" data={this.state.data} />;
+    return <Leaderboard title="Top Performers" data={this.state.data} />;
   }
 
   componentDidUpdate() {
