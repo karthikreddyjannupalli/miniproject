@@ -1,5 +1,6 @@
 export const login = {
-    username: '',
+    username: "",
+    password:"",
     telnum: " ",
     email: '',
     agree: false,

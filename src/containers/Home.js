@@ -2,7 +2,7 @@ import React from 'react';
 import ControlledCarousel from '../components/Corosel';
 function Home(props){
     return (
-        <div>
+        <div className="carousel">
             <ControlledCarousel />
         </div>
     );

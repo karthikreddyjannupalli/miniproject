@@ -1,4 +1,4 @@
-.App {
+.carousel {
   text-align: center;
 }
 
@@ -71,36 +71,11 @@ color: darkslategray
 /* #####################END OF NAVBAR#################### */
 /* #####################START OF SIGNUP################## */
 
-input[type="password"]{
-  height: 100%;
-  }
-  input{
-      margin-top: 30px;
-      width: 240px;
-      margin-left: 0px;
-      height: 25px;
-      box-shadow: rgba(0,0, 0, 2.1);
-  }
-  
-  input[type=password]{
-      width: 240px;
-      margin-top: 20px;
-      height: 25px;
-  }
+
+
   .grbut{
   width: 280px;
   margin-left: 50px;
-  }
-  input[type="checkbox"]{
-      margin-left: 0px;
-      margin-top: 20px;
-      width: 30px;
-      width: 40px;
-  }
-  label{
-      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-      padding: 0px;
-      font-size: 20px;
   }
   #register{
   top: 40px;
@@ -181,4 +156,6 @@ input[type="password"]{
 
   /* ###########################END OF SIGNUP##################### */
   /* ########################LEADERBOARD ######################### */
-  
+  .editor{
+    height: 1000px;
+  }
