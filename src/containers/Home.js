@@ -4,6 +4,7 @@ function Home(props){
     return (
         <div className="carousel">
             <ControlledCarousel />
+ 
         </div>
     );
 }

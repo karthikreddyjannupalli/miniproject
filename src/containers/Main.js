@@ -5,8 +5,7 @@ import EditorMain from './Editor/EditorMain';
 import Home from './Home';
 import LeaderboardMain from './LeaderBoard';
 import SignUp from './Signup';
-
-
+import Footer from './Footer';
 class Main extends Component{
     constructor(props){
         super(props);
@@ -22,6 +21,7 @@ class Main extends Component{
             <Route path="/editor" component={EditorMain} />
             <Redirect to="/home" />
             </Switch>
+            <Footer />
             </div>
         );
     }
