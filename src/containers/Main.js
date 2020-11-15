@@ -5,6 +5,7 @@ import EditorMain from './Editor/EditorMain';
 import Home from './Home';
 import LeaderboardMain from './LeaderBoard';
 import SignUp from './Signup';
+import About from './Aboutus';
 import Footer from './Footer';
 class Main extends Component{
     constructor(props){
@@ -19,6 +20,7 @@ class Main extends Component{
             <Route path="/signup" component={SignUp} />
             <Route path="/leaderboard" component={LeaderboardMain} />
             <Route path="/editor" component={EditorMain} />
+            <Route path="/aboutus" component={About} />
             <Redirect to="/home" />
             </Switch>
             <Footer />
