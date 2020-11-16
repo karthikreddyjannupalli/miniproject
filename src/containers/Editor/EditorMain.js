@@ -10,6 +10,7 @@ import Checkbox from "@material-ui/core/Checkbox";
 import { Dialog, Grid } from "@material-ui/core";
 import { Col, Row } from "reactstrap";
 import { TextArea } from "semantic-ui-react";
+import {FaCodepen} from "react-icons/fa"
 var properties = require("../../properties.json");
 
 const RenderEditor = Loadable({
@@ -318,11 +319,14 @@ class Editor extends Component {
   }
   showCheckBoxAndCompile = () => {
     var buffer = [];
-    let styles={backgroundColor:"#3a59a2"}
+    let styles={backgroundColor:"#078282FF"}
     if (typeof this.props.state === "undefined") {
       buffer.push(
+        
+<div id="edit">
+<h1 style={{fontSize:70,color:"#312F2F",fontFamily:"Lucida Console, Monaco, monospace",marginLeft:0,marginTop:0}}><FaCodepen  />CODEX EDITOR</h1><br/><br/><br/><br/>
+
         <div className="Editor" style={styles} key={1}>
-          <h1 style={{fontSize:70,color:"#ffffff",fontFamily:"Gill Sans, Gill Sans MT, Calibri, sans-serif",marginLeft:0}}>CODEX EDITOR</h1><br/><br/><br/><hr style={{color:"black"}}/>
           <RenderEditor
             value={this.state.value}
             theme={this.state.theme}
@@ -397,6 +401,7 @@ class Editor extends Component {
           <br />
           <br />
           <br />
+        </div>
         </div>
       );
     } else if (this.props.state === "Assignment") {
