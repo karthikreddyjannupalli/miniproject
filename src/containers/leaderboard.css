@@ -198,7 +198,7 @@ div#app1 {
 	color: #ddd;
 }
 .leaderboard ol li small::before {
-	content: '$';
+	content: '🚀';
 }
 .leaderboard ol li img {
 	position: absolute;
