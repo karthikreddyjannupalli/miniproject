@@ -24,12 +24,6 @@ export let MenuItems=[
         url: "/aboutus",
         cName:"nav-link",
         icon:<FaRocket  />
-    },{
-        title:"Login/SignUp",
-        url: "/signup",
-        cName:"nav-link",
-        icon:<FaSignInAlt/>
-        
     },
 
 ]

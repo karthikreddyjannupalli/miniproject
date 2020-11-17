@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Loadable from "react-loadable";
 import Button from "@material-ui/core/Button";
 import { HelloWorldTemplates } from "./HelloWorldTemplates";
-import { editorModes, jdoodleLangNotation } from "./Utils";
+import { editorModes, hackerEarthLangNotation } from "./Utils";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import Loading from "../../components/loader";
@@ -139,9 +139,9 @@ class Editor extends Component {
     value = index.props.children;
     var map = this.buildMap(HelloWorldTemplates);
     var editorModesMap = this.buildMap(editorModes);
-    var jdoodleLangNotationMap = this.buildMap(jdoodleLangNotation);
+    var hackerEarthLangNotationMap = this.buildMap(hackerEarthLangNotation);
     this.setState({
-      languageValue: jdoodleLangNotationMap.get(value),
+      languageValue: hackerEarthLangNotationMap.get(value),
       language: index.props.value,
       mode: editorModesMap.get(value),
       value: map.get(value),

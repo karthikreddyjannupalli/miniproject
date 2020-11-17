@@ -9,6 +9,8 @@ class Leaderboard extends React.Component {
       .map((z, i) => {
         var id = data[i].userId,
           un = data[i].userName,
+          qs= data[i].questions,
+          tm=data[i].time,
           en = data[i].earnings,
           oc = () => {
             window.open(
@@ -59,16 +61,16 @@ class LeaderboardMain extends React.Component {
     setTimeout(
       () =>
         this.update([
-          { userId: 3405462, userName: "student1", earnings: 1000 },
-          { userId: 203, userName: "student2", earnings: 500 },
-          { userId: 203, userName: "student3", earnings: 500 },
-          { userId: 203, userName: "student4", earnings: 500 },
-          { userId: 203, userName: "student5", earnings: 500 },
-          { userId: 203, userName: "student6", earnings: 500 },
-          { userId: 203, userName: "student7", earnings: 500 },
-          { userId: 203, userName: "student8", earnings: 500 },
-          { userId: 203, userName: "student9", earnings: 500 },
-          { userId: 203, userName: "student10", earnings: 500 },
+          { userId: 3405462, userName: "student1", questions: 3 , time: '1 Hr' , earnings: 1000 },
+          { userId: 203, userName: "student2", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student3", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student4", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student5", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student6", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student7", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student8", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student9", questions: 3 , time: '1 Hr' , earnings: 500 },
+          { userId: 203, userName: "student10", questions: 3 , time: '1 Hr' , earnings: 500 },
         ]),
       500
     );

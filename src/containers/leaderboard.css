@@ -176,6 +176,7 @@ div#app1 {
 	border-radius: 1.25rem;
 	text-align: center;
 }
+
 .leaderboard ol li:nth-child(1) mark::before {
 	background: rgba(204, 170,  102, 0.8);
 	font-weight: bold;
@@ -198,7 +199,7 @@ div#app1 {
 	color: #ddd;
 }
 .leaderboard ol li small::before {
-	content: '$';
+	content: '';
 }
 .leaderboard ol li img {
 	position: absolute;
