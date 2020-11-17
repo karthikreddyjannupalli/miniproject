@@ -28,7 +28,7 @@ export const modes = [
     R: "r",
   };
   
-  export const jdoodleLangNotation = {
+  export const hackerEarthLangNotation = {
     Javascript: "nodejs10.1.0",
     "C gcc 9": "cgcc9.1.0",
     "C++": "cppgcc9.1.0",
