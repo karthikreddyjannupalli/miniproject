@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://codeXCreator:codexvce@cluster0.oijsb.mongodb.net/codeXdata?retryWrites=true&w=majority",
+    "secretOrKey": "secret"
+}
