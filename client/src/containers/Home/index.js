@@ -29,22 +29,6 @@ return (
               <h4><b>Hey there, {user.name}</b></h4> 
             </div>
             <div className="col-2">
-            <Button
-              style={{
-                width: "150px",
-                borderRadius: "3px",
-                letterSpacing: "1.5px",
-                marginTop: "1rem",
-              }}
-              variant="contained"
-              sm={2}
-              md={2}
-              ld={2}
-              onClick={this.onLogoutClick}
-              className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-            >
-              Logout
-            </Button>
             </div>
           </div>
         </div>

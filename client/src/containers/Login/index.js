@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../../actions/auth.actions";
 import classnames from "classnames";
 import Footer from "../../components/Footer";
+import { Button } from "@material-ui/core";
 class Login extends Component {
   constructor() {
     super();
@@ -18,12 +19,18 @@ class Login extends Component {
   componentDidMount() {
     // If logged in and user navigates to Login page, should redirect them to dashboard
     if (this.props.auth.isAuthenticated) {
+      if(this.props.auth.user.userType==="student")
       this.props.history.push("/dashboard");
+      else
+      this.props.history.push("/admindashboard");
     }
   }
 componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/dashboard"); // push user to dashboard when they login
+      if(this.props.auth.user.userType==="student")
+      this.props.history.push("/dashboard");
+      else
+      this.props.history.push("/admindashboard");
     }
 if (nextProps.errors) {
       this.setState({
@@ -92,20 +99,22 @@ return (
                 </span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
+                <Button
                   style={{
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginTop: "1rem"
                   }}
+                  variant="contained"
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Login
-                </button>
+                </Button>
               </div>
             </form>
+            <br/>
           </div>
         </div>
       </div>

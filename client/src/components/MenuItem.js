@@ -25,6 +25,12 @@ export let MenuItems=[
         cName:"nav-link",
         icon:<FaRocket  />
     },
+    {
+        title: "DashBoard",
+        url: "",
+        cName: "nav-link",
+        icon: <FaHome />
+    }
 
 ]
-export default MenuItems
+export default MenuItems;

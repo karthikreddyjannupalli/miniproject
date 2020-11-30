@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/auth.actions";
 import classnames from "classnames";
+import { MenuItem, Select } from "@material-ui/core";
 class Register extends Component {
   constructor() {
     super();
@@ -13,6 +14,7 @@ class Register extends Component {
       email: "",
       password: "",
       password2: "",
+      userType: "",
       errors: {}
     };
   }
@@ -33,12 +35,16 @@ componentWillReceiveProps(nextProps) {
 onChange = e => {
     this.setState({ [e.target.id]: e.target.value });
   };
+  onSelect = e => {
+    this.setState({[e.target.name]: e.target.value});
+  }
 onSubmit = e => {
     e.preventDefault();
 const newUser = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       email: this.state.email,
+      userType: this.state.userType,
       password: this.state.password,
       password2: this.state.password2
     };
@@ -106,6 +112,16 @@ return (
                 <label htmlFor="email">Email</label>
                 <span>{errors.email}</span>
               </div>
+              <Select
+              labelId="demo-simple-select-label"
+              id="userType"
+              value={this.state.userType}
+              onChange={this.onSelect}
+              name="userType"
+              >
+            <MenuItem value={"admin"}>admin</MenuItem>
+            <MenuItem value={"student"}>student</MenuItem>
+          </Select>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}

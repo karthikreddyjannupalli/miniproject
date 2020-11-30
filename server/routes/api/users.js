@@ -32,7 +32,9 @@ router.post("/login", (req, res) => {
         if (isMatch) {
           const payload = {
             id: user.id,
-            name: user.firstname
+            name: user.firstname,
+            email: user.email,
+            userType: user.userType
           };
   
           jwt.sign(payload,
@@ -75,7 +77,8 @@ router.post("/register", async (req, res) => {
           lastname: req.body.lastname,
           email: req.body.email,
           password: req.body.password,
-          avatar: avatar
+          avatar: avatar,
+          userType: req.body.userType
         });
         const salt = await bcrypt.genSalt(10);
         newUser.password = await bcrypt.hash(newUser.password, salt);

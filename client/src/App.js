@@ -16,7 +16,9 @@ import About from "./containers/Aboutus";
 import Dashboard from "./containers/Home/index";
 import Footer from "./containers/Footer";
 import "./App.css";
-
+import AdminDashboard from "./containers/AdminDashboard"
+import AdminRoute from "./components/AdminRoute";
+import Create from "./containers/Create";
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
   setAuthToken(token);
@@ -46,6 +48,8 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={SignUp}/>
             <PrivateRoute path="/dashboard" component={Dashboard} /> 
+            <AdminRoute path="/admindashboard" component={AdminDashboard} />
+            <AdminRoute path="/create" component={Create} />
             <Redirect to="/home" />
             </Switch>
             <Footer />
