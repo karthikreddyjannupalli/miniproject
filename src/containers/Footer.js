@@ -7,7 +7,6 @@ let year=p.getFullYear();
 const [isModalOpen, toggleModal] = useState(false);
   return(
       <footer class="site-footer">
-        {p.getDate}
       <div class="container">
         <div class="row">
           <div class="col-xs-6 col-md-3">
@@ -35,7 +34,7 @@ const [isModalOpen, toggleModal] = useState(false);
       <div class="container">
         <div class="row">
           <div class="col-md-8 col-sm-6 col-xs-12">
-            <p class="copyright-text">Copyright &copy;{year}  <a href="/home">CODEX</a>.
+            <p class="copyright-text">Copyright &copy;{year} <a href="/home">CODEX</a>.
             </p>
           </div>
 

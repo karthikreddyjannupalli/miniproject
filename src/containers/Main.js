@@ -7,6 +7,8 @@ import Home from './Home';
 import LeaderboardMain from './LeaderBoard';
 import About from './Aboutus';
 import Footer from './Footer';
+import createUser from './CreateUser'
+import Login from './Login'
 class Main extends Component{
     constructor(props){
         super(props);
@@ -20,6 +22,8 @@ class Main extends Component{
             <Route path="/leaderboard" component={LeaderboardMain} />
             <Route path="/editor" component={EditorMain} />
             <Route path="/aboutus" component={About} />
+            <Route path="/logtest" component={createUser} />
+            <Route path="/logtest1" component={Login} />
             <Redirect to="/home" />
             </Switch>
             <Footer />
