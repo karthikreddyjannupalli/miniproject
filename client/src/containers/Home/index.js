@@ -12,7 +12,37 @@ import GridItem from "../../components/Grid/GridItem";
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Code from "@material-ui/icons/Code";
 import { Button } from "@material-ui/core";
+import Axios from "axios";
 class Home extends Component {
+  constructor(props){
+    super(props);
+    this.state={ 
+      contest: [],
+      assignments: [],
+      analysis: []
+    }
+  };
+  componentDidMount(){
+    Axios.post("http://localhost:5000/api/contest/getcontests")
+    .then(res=>res.data)
+    .then((res)=>{
+      let Names=[];
+      console.log(res);
+      res.map((contestData)=>{
+      //if(contestData[0] < new Date())
+        Names.push(contestData[1]);
+      })
+      this.setState({
+        contest: Names,
+        assignments: Names
+
+      })
+      console.log(this.state.contest);
+    })
+    .catch((err)=>{
+        console.log(err);
+    });
+  }
   onLogoutClick = e => {
     e.preventDefault();
     this.props.logoutUser();
@@ -47,8 +77,9 @@ return (
                 tabContent: (
                   <Tasks
                     checkedIndexes={[]}
-                    tasksIndexes={[0, 1, 2, 3]}
-                    tasks={bugs}
+                    tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
+                    tasks={this.state.assignments}
+                    userType={this.props.auth.userType}
                   />
                 )
               },
@@ -58,8 +89,9 @@ return (
                 tabContent: (
                   <Tasks
                     checkedIndexes={[0]}
-                    tasksIndexes={[0, 1]}
-                    tasks={website}
+                    tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
+                    tasks={this.state.contest}
+                    userType={this.props.auth.userType}
                   />
                 )
               }

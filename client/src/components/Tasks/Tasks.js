@@ -20,6 +20,7 @@ import styles from "../../assets/jss/material-dashboard-react/components/tasksSt
 const useStyles = makeStyles(styles);
 
 export default function Tasks(props) {
+  console.log(props);
   const classes = useStyles();
   const [checked, setChecked] = React.useState([...props.checkedIndexes]);
   const handleToggle = value => {
@@ -32,7 +33,7 @@ export default function Tasks(props) {
     }
     setChecked(newChecked);
   };
-  const { tasksIndexes, tasks, rtlActive } = props;
+  const { tasksIndexes, tasks, rtlActive , userType } = props;
   const tableCellClasses = classnames(classes.tableCell, {
     [classes.tableCellRTL]: rtlActive
   });
@@ -42,20 +43,9 @@ export default function Tasks(props) {
         {tasksIndexes.map(value => (
           <TableRow key={value} className={classes.tableRow}>
             <TableCell className={tableCellClasses}>
-              <Checkbox
-                checked={checked.indexOf(value) !== -1}
-                tabIndex={-1}
-                onClick={() => handleToggle(value)}
-                checkedIcon={<Check className={classes.checkedIcon} />}
-                icon={<Check className={classes.uncheckedIcon} />}
-                classes={{
-                  checked: classes.checked,
-                  root: classes.root
-                }}
-              />
             </TableCell>
-            <TableCell className={tableCellClasses}>{tasks[value]}</TableCell>
-            <TableCell className={classes.tableActions}>
+            <TableCell className={tableCellClasses}><h5>{tasks[value]}</h5></TableCell>
+            {userType==="admin"?(<TableCell className={classes.tableActions}>
               <Tooltip
                 id="tooltip-top"
                 title="Edit Task"
@@ -90,7 +80,7 @@ export default function Tasks(props) {
                   />
                 </IconButton>
               </Tooltip>
-            </TableCell>
+            </TableCell>):<div></div>}
           </TableRow>
         ))}
       </TableBody>

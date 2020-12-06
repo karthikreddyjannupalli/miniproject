@@ -42,10 +42,36 @@ import { extend } from "chartist";
 
 const useStyles = makeStyles(styles);
 
-export default class Dashboard extends Component{
+class Dashboard extends Component{
   //const classes = useStyles();
   constructor(props){
     super(props);
+    this.state={ 
+      contest: [],
+      assignments: [],
+      analysis: []
+    }
+  }
+  componentDidMount(){
+    Axios.post("http://localhost:5000/api/contest/getcontests")
+    .then(res=>res.data)
+    .then((res)=>{
+      let Names=[];
+      console.log(res);
+      res.map((contestData)=>{
+      //if(contestData[0] < new Date())
+        Names.push(contestData[1]);
+      })
+      this.setState({
+        contest: Names,
+        assignments: Names
+
+      })
+      console.log(this.state.contest);
+    })
+    .catch((err)=>{
+        console.log(err);
+    });
   }
   render(){
     console.log(this.props);
@@ -65,7 +91,8 @@ export default class Dashboard extends Component{
                   <Tasks
                     checkedIndexes={[]}
                     tasksIndexes={[0, 1, 2, 3]}
-                    tasks={bugs}
+                    tasks={this.state.assignments}
+                    userType={this.props.auth.userType}
                   />
                 )
               },
@@ -76,7 +103,8 @@ export default class Dashboard extends Component{
                   <Tasks
                     checkedIndexes={[0]}
                     tasksIndexes={[0, 1]}
-                    tasks={website}
+                    tasks={this.state.contest}
+                    userType={this.props.auth.userType}
                   />
                 )
               }
@@ -86,5 +114,17 @@ export default class Dashboard extends Component{
         </GridContainer>
     </div>
   );
-          }
 }
+}
+
+Dashboard.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(
+  mapStateToProps,
+  null
+)(Dashboard);

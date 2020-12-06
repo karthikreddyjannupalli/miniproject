@@ -37,7 +37,7 @@ int main() {
     return 0;
 }`,
 
-  Javascript: `console.log("Welcome to BeondClass");`,
+  Javascript: `console.log("Welcome to CodeX");`,
 
   "Python 2.7.16":
     "# Enter your code here. Read input from STDIN. Print output to STDOUT",
@@ -49,7 +49,7 @@ int main() {
     }
 }`,
 
-  "Java 1.8": `import java.io.*;
+  "Java 8": `import java.io.*;
 import java.util.*;
 
 public class Solution {
@@ -71,8 +71,23 @@ import "fmt"
 func main() {
  //Enter your code here. Read input from STDIN. Print output to STDOUT
 }`,
-  Bash: 'echo "Welcome to BeondClass !!!"',
-  Ruby: 'puts "Welcome to BeondClass !!!"',
-  R: `myString <- "Welcome to BeondClass !!!"
+  Bash: 'echo "Welcome to CodeX !!!"',
+  Ruby: 'puts "Welcome to CodeX !!!"',
+  R: `myString <- "Welcome to CodeX !!!"
     print ( myString)`,
+  Php: `<?php
+  echo "Welcome to CodeX !!!";
+?>`,
+  Rust: `fn main() {
+    println!("Welcome to CodeX!!!");
+  }`,
+  "C#":`namespace HelloWorld
+  {
+      class Hello {         
+          static void Main(string[] args)
+          {
+              System.Console.WriteLine("Hello World!");
+          }
+      }
+  }`
 };

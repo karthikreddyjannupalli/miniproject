@@ -11,6 +11,7 @@ import { Dialog, Grid } from "@material-ui/core";
 import { Col, Row } from "reactstrap";
 import { TextArea } from "semantic-ui-react";
 import {FaCodepen} from "react-icons/fa"
+import Axios from "axios";
 var properties = require("../../properties.json");
 
 const RenderEditor = Loadable({
@@ -34,12 +35,13 @@ const Inputoutput = Loadable({
   timeout: 10000,
 });
 
-const defaultValue = `console.log("Welcome to BeondClass");`;
+const defaultValue = `console.log("Welcome to CodeX");`;
 
 class Editor extends Component {
   constructor() {
     super();
     this.state = {
+      codeStatus: "",
       compileError: "",
       stdErr: "",
       stdOut: "",
@@ -47,10 +49,10 @@ class Editor extends Component {
       buttonDisabled: false,
       submissionStarted: false,
       value: defaultValue,
-      languageValue: "nodejs10.1.0",
+      languageValue: "JAVASCRIPT_NODE",
       testcases: "",
       language: "javascript",
-      theme: "textmate",
+      theme: "solarized_dark",
       mode: "javascript",
       fontSize: 14,
       showGutter: true,
@@ -138,9 +140,11 @@ class Editor extends Component {
   };
   setMode = (e, index, value) => {
     value = index.props.children;
+    console.log(value);
     var map = this.buildMap(HelloWorldTemplates);
     var editorModesMap = this.buildMap(editorModes);
     var hackerEarthLangNotationMap = this.buildMap(hackerEarthLangNotation);
+    console.log(hackerEarthLangNotationMap);
     this.setState({
       languageValue: hackerEarthLangNotationMap.get(value),
       language: index.props.value,
@@ -163,26 +167,17 @@ class Editor extends Component {
         submissionStarted: true,
       });
       this.scrollToBottom();
-      fetch(
-        "http://" +
-          properties.getHostName +
-          ":8080/assignments/jdoodle/execute",
-        {
-          method: "POST",
-          headers: {
-            mode: "cors",
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            source: this.state.value,
-            lang: this.state.languageValue,
-            testcases: this.state.testcases,
-          }),
-        }
-      )
+      Axios.post("http://" + properties.getHostName + ":5000/api/editor/run",JSON.stringify({
+        source: this.state.value,
+        lang: this.state.languageValue,
+        testcases: this.state.testcases,
+      }),{ headers: {
+        mode: "cors",
+        "Content-Type": "application/json",
+      },
+      credentials: "include"})
         .then((response) => {
-          if (response.status === 200) return response.json();
+          if (response.status === 200) return JSON.parse(response["data"]);
           else if (response.status === 500) {
            console.log(
               "Sorry something went wrong or you might not be connected to internet",
@@ -192,18 +187,21 @@ class Editor extends Component {
         })
         .then((response) => {
           if (response) {
+            console.log(response);
             this.setState(
               {
                 buttonDisabled: false,
-                compileError: "output" in response ? response["output"] : "",
-                stdOut: "output" in response ? response["output"] : null,
-                runtime: "cpuTime" in response ? response["cpuTime"] : 0,
-                memory: "memory" in response ? response["memory"] : 0,
+                compileError: response.compile_status=="OK"?"":response.compile_status,
+                stdOut: response.compile_status=="OK"?response.run_status.output:null,
+                runtime: response.compile_status=="OK"?response.run_status.time_used:0,
+                memory: response.compile_status=="OK"?response.run_status.memory_used:0,
+                codeStatus: response.run_status.status,
               },
               function callback() {
                 this.scrollToBottom();
               }
             );
+            console.log(this.state);
           } else {
             this.setState({
               buttonDisabled: false,
@@ -226,7 +224,7 @@ class Editor extends Component {
         "http://" +
           properties.getHostName +
           ":8080/assignments/jdoodle/assignment/compile",
-        {
+          {
           method: "POST",
           headers: {
             mode: "cors",
@@ -248,6 +246,7 @@ class Editor extends Component {
           }
         })
         .then((response) => {
+          console.log(response);
           if (response)
             this.setState(
               {
@@ -396,6 +395,7 @@ class Editor extends Component {
             runtime={this.state.runtime}
             memory={this.state.memory}
             message={this.state.message}
+            codeStatus={this.state.codeStatus}
           />
           <br />
           <br />

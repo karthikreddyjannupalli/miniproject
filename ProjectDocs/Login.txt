@@ -3,3 +3,16 @@ CLient id:
 CLient Secret:
 vZgmhOl7FvFypMLlkHOKMjaZ
 mongo:mongodb+srv://codeXCreator:codexvce@cluster0.oijsb.mongodb.net/codeXdata?retryWrites=true&w=majority
+
+Name: CodeX
+
+Hostname: http://localhost:3000/
+
+Client Id: 2a627423748b695867ec619e446c524d6f975bd2128a.api.hackerearth.com
+
+Client Secret Key: b9e57deca62c92c6784841a5aeb10428e30efb3a
+
+Quota
+Run: 1000 | Used: 0
+
+Compile: 1000 | Used: 0

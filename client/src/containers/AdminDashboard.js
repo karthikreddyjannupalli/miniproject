@@ -13,6 +13,7 @@ import { logoutUser } from "../actions/auth.actions";
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import { useHistory } from 'react-router-dom';
+import Axios from 'axios';
 
 class AdminDashboard extends Component{
     constructor(props){
@@ -29,6 +30,25 @@ class AdminDashboard extends Component{
         this.props.logoutUser();
       };
     componentDidMount(){
+        Axios.post("http://localhost:5000/api/contest/getcontests")
+        .then(res=>res.data)
+        .then((res)=>{
+          let Names=[];
+          console.log(res);
+          res.map((contestData)=>{
+          //if(contestData[0] < new Date())
+            Names.push(contestData[1]);
+          })
+          this.setState({
+            contest: Names,
+            assignments: Names
+
+          })
+          console.log(this.state.contest);
+        })
+        .catch((err)=>{
+            console.log(err);
+        });
 
     };
     create = () =>{
@@ -36,7 +56,6 @@ class AdminDashboard extends Component{
     }
     render(){
         const { user } = this.props.auth;
-    console.log(this.props.auth.user.name);
         return (
             <div className="container valign-wrapper">
             <div className="row">
@@ -64,8 +83,9 @@ class AdminDashboard extends Component{
                   tabContent: (
                     <Tasks
                       checkedIndexes={[]}
-                      tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index + 1)}
+                      tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
                       tasks={this.state.assignments}
+                      userType={user.userType}
                     />
                   )
                 },
@@ -74,9 +94,10 @@ class AdminDashboard extends Component{
                   tabIcon: Code,
                   tabContent: (
                     <Tasks
-                      checkedIndexes={[0]}
-                      tasksIndexes={Array.from({length: this.state.contest.length}, (_, index) => index + 1)}
+                      checkedIndexes={[]}
+                      tasksIndexes={Array.from({length: this.state.contest.length}, (_, index) => index )}
                       tasks={this.state.contest}
+                      userType={user.userType}
                     />
                   )
                 },
@@ -86,8 +107,9 @@ class AdminDashboard extends Component{
                     tabContent: (
                       <Tasks
                         checkedIndexes={[]}
-                        tasksIndexes={Array.from({length: this.state.analysis.length}, (_, index) => index + 1)}
+                        tasksIndexes={Array.from({length: this.state.analysis.length}, (_, index) => index)}
                         tasks={this.state.analysis}
+                        userType={user.userType}
                       />
                     )
                   }

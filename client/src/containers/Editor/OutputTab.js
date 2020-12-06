@@ -1,28 +1,34 @@
 import React, { Component } from "react";
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { Grid } from "@material-ui/core";
+import { Grid, TextareaAutosize } from "@material-ui/core";
 import { Col, Row } from "reactstrap";
 
 class OutputTab extends Component {
   printStats() {
     var buffer = [];
     buffer.push(
-      <input
+      <TextareaAutosize
+        minRows={1}
+        maxRows={1}
+        style={{ width: "inherit" }}
         type="text"
         className="OutputTextInput"
         key={1}
         disabled={true}
         value={"Runtime : " + this.props.runtime + " s"}
-      />
+        />
     );
     buffer.push(
-      <input
+      <TextareaAutosize
+        minRows={1}
+        maxRows={1}
+        style={{ width: "inherit" }}
         type="text"
         className="OutputTextInput"
         key={2}
         disabled={true}
         value={"Memory : " + this.props.memory + " bytes"}
-      />
+        />
     );
     return buffer;
   }
@@ -32,28 +38,32 @@ class OutputTab extends Component {
     var stdoutstring = "";
     var stderrstring = "";
     if (
-      this.props.compileError !== "" &&
-      this.props.compileError !== "Syntax OK\n" &&
-      this.props.compileError.includes("error")
+      this.props.compileError !== ""
     )
       buffer.push(
-        <input
-          type="text"
-          className="OutputTextInput"
-          key={1}
+        <TextareaAutosize
+        minRows={4}
+        maxRows={4}
+        style={{ width: "500px" }}
+        type="text"
+        className="OutputTextInput"
+        key={1}
           disabled={true}
           value={this.props.compileError}
         />
       );
     else if (
-      this.props.compileError.includes("timeout") ||
-      this.props.compileError.includes("Timeout")
+      this.props.codeStatus!=="AC" 
     ) {
       stderrstring = this.props.compileError;
       buffer.push(
-        <textarea
-          className="OutputTextInput"
-          key={1}
+        <TextareaAutosize
+        minRows={4}
+        maxRows={4}
+        style={{ width: "500px" }}
+        type="text"
+        className="OutputTextInput"
+        key={1}
           disabled
           value={stderrstring}
         />
@@ -75,11 +85,14 @@ class OutputTab extends Component {
         }
       }
       buffer.push(
-        <textarea
-          rows={20}
-          className="OutputTextInput"
-          key={1}
-          disabled={true}
+        <TextareaAutosize
+        minRows={4}
+        maxRows={4}
+        style={{ width: "700px" }}
+        type="text"
+        className="OutputTextInput"
+        key={1}
+          disabled
           value={stdoutstring}
         />
       );
@@ -88,6 +101,7 @@ class OutputTab extends Component {
   }
 
   render() {
+    console.log(this.props);
     if (this.props.buttonDisabled)
       return (
         <Grid fluid>
