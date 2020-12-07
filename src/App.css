@@ -332,8 +332,8 @@ color: darkslategray
   #edit{
     box-shadow: 0 4px 8px 0 rgba(78, 105, 141, 0.2);
   transition: 0.3s;
-    background-color:rgba(35, 35, 131, 0.667);
-    border: #617583;
+    background-color:rgba(133, 133, 204, 0.667);
+      border: #617583;
     border-style: solid;
   }
   .create{

@@ -1,5 +1,7 @@
 import React from "react";
 import './leaderboard.css';
+import axios from 'axios'
+import io from 'socket.io-client'
 class Leaderboard extends React.Component {
   render() {
     var data = this.props.data || [],
@@ -58,49 +60,34 @@ class LeaderboardMain extends React.Component {
     this.state = {
       data: [],
     };
-    setTimeout(
-      () =>
-        this.update([
-          { userId: 3405462, userName: "student1", questions: 3 , time: '1 Hr' , earnings: 1000 },
-          { userId: 203, userName: "student2", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student3", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student4", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student5", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student6", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student7", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student8", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student9", questions: 3 , time: '1 Hr' , earnings: 500 },
-          { userId: 203, userName: "student10", questions: 3 , time: '1 Hr' , earnings: 500 },
-        ]),
-      500
-    );
     /*var socket = this.connect('wss://r1-contest-api.herokuapp.com', event => {
 			this.update(JSON.parse(event.data));
 		});*/
   }
-
-  connect(uri, messageHandler, tries) {
-    tries = tries || 0;
-    var socket = new WebSocket(uri);
-    socket.addEventListener("open", (event) => {
-      tries = 0;
-      console.log("Connected to wss!");
-    });
-    socket.addEventListener("message", messageHandler);
-    socket.addEventListener("close", (event) => {
-      tries < 8 && tries++;
-      var delay = Math.floor((Math.random() + 0.5) * Math.pow(1.5, tries));
-      console.log(
-        "Disconnected from socket. Reconnecting with random exponential backoff (" +
-          delay +
-          " seconds)..."
-      );
+  componentDidMount() {
+    var socket=io('http://localhost:5000')
+    console.log(socket)
+    socket.on('get',(lb)=>{
+      console.log("DATA")
+      console.log(lb)
       setTimeout(
-        this.connect.bind(this, uri, messageHandler, tries),
-        1000 * delay
-      );
-    });
-    return socket;
+     () =>
+     
+      this.update([
+ { userId: lb[0].id, userName: lb[0].name, questions: 3 , time: '1 Hr' , earnings: lb[0].points },
+ { userId: lb[1].id, userName: lb[1].name, questions: 3 , time: '1 Hr' , earnings: lb[1].points },
+ { userId: lb[2].id, userName: lb[2].name, questions: 3 , time: '1 Hr' , earnings: lb[2].points },
+ { userId: lb[3].id, userName: lb[3].name, questions: 3 , time: '1 Hr' , earnings: lb[3].points },
+ { userId: lb[4].id, userName: lb[4].name, questions: 3 , time: '1 Hr' , earnings: lb[4].points },
+ { userId: lb[5].id, userName: lb[5].name, questions: 3 , time: '1 Hr' , earnings: lb[5].points },
+ { userId: lb[6].id, userName: lb[6].name, questions: 3 , time: '1 Hr' , earnings: lb[6].points },
+ { userId: lb[7].id, userName: lb[7].name, questions: 3 , time: '1 Hr' , earnings: lb[7].points },
+ { userId: lb[8].id, userName: lb[8].name, questions: 3 , time: '1 Hr' , earnings: lb[8].points },
+ { userId: lb[9].id, userName: lb[9].name, questions: 3 , time: '1 Hr' , earnings: lb[9].points },
+          ]),
+        500
+      );  
+    })
   }
 
   update(data) {
@@ -108,7 +95,7 @@ class LeaderboardMain extends React.Component {
   }
 
   render() {
-    return <Leaderboard title="Top Performers" data={this.state.data} />;
+    return <Leaderboard title="Top Performers of the Week" data={this.state.data} />;
   }
 
   componentDidUpdate() {
