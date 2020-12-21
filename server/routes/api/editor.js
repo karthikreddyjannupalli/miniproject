@@ -80,31 +80,31 @@ router.post("/runtestcases",(req,res)=>{
                     }
                     if(response){
                         var ret = JSON.parse(response); 
+                        console.log(ret.run_status.output,file2);
                         if(ret.run_status.output === file2){
                             ret.codingAssignmentStatus="ACCEPTED";
                             RESULT.find({contestname: req.body.contest,user: req.body.auth.user.id})
                                     .then((use)=>{
-                                        if(use===null){
-                                            new RESULT({
+                                        console.log(use);
+                                        if(use.length===0){
+                                           const result= new RESULT({
                                                 user: req.body.auth.user.id,
                                                 contestname: req.body.contest,
-                                                contestId: req.body.contestId,
                                                 questionno: 1,
-                                                question: [req.body.question],
+                                                question: new Array(req.body.question),
                                                 points: 100,
-                                            }).save();
-                                        }
+                                            })
+                                            result.save();                                        }
                                         else{
-                                        use[0].question.find((q)=>{
+                                        var r =use[0].question.find((q)=>{
                                             return q===req.body.question;
                                         })
-                                        .then((r)=>{
-                                            if(r===null){
-                                                RESULT.update({user: use[0].user,contestname: use[0].contestname},{$push: {question: req.body.question}});
-                                                RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {questionno: use[0].questionno+1}});
-                                                RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {points: 100*(use[0].questionno+1)}});
-                                            }
-                                        })
+                                        console.log(r);
+                                        if(r===undefined){
+                                            RESULT.update({user: use[0].user,contestname: use[0].contestname},{$push: {question: req.body.question}}).then(res=>console.log(res));
+                                            RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {questionno: use[0].questionno+1}}).then(res=>console.log(res));
+                                            RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {points: 100*(use[0].questionno+1)}}).then(res=>console.log(res));
+                                        }
                                     }
                                     })
                         }else{ 

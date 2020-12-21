@@ -231,7 +231,7 @@ class Editor extends Component {
               source: this.state.value,
               lang: this.state.languageValue,
               question: this.props.questionName,
-              contest : this.props.contestId,
+              contest : this.props.contestName,
               auth: this.props.auth,
             }),{ headers: {
               mode: "cors",

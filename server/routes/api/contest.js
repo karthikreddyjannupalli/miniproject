@@ -42,8 +42,10 @@ router.post("/getcontests",(req,res)=>{
    var contestNames = [];
    CONTEST.find().then(response=>{
       console.log(response);
-      contestNames.push([response[0].contestdate,response[0].contestname,response[0].contestId]);
-      contestNames.sort();
+      response.map((r)=>{
+         contestNames.push([r.contestdate,r.contestname,r.contestId]);
+         contestNames.sort();
+      })
       res.status(200).send(contestNames)})
    .catch(err=>{
       res.status(400).send(err);

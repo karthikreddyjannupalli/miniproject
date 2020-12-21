@@ -23,7 +23,7 @@ export default class ContestHome extends Component{
     }
     onQuestionSelect(e){
       console.log(e.target.value);
-      this.state.questionName=e.target.value;
+      this.setState({questionName: e.target.value},()=>{ console.log(this.state);});
     }
     componentDidMount(){
       const contest={
@@ -78,7 +78,7 @@ export default class ContestHome extends Component{
         </Accordion>);
       })
       }
-      <EditorMain1 contestId={this.state.contestName} questionName={this.state.questionName}/>
+      <EditorMain1 contestName={this.state.contestName} questionName={this.state.questionName}/>
     </div>
   );
  }

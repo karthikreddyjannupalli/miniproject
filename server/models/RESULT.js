@@ -1,29 +1,30 @@
 const mongoose = require("mongoose");
 
-const ResultSchema = new mongoose.Schema({
+const ResultSchema = new mongoose.Schema({  
   user: {
     type: String,
-    required: true 
+    required: true,
+    unique: false
   },
   contestname: {
     type: String,
-    required: true
-  },
-  contestId: {
-    type: String,
     required: true,
-    unique: true
+    unique: false
   },
   questionno: {
     type: Number,
-    required: true
+    required: true,
+    unique: false
   },
-  question: [{
-      questiontitle: {type: String,required: true}
-  }],
+  question: {
+      type: Array,
+      required: true,
+      unique: false
+  },
   points: {
       type: Number,
-      required: true
+      required: true,
+      unique: false
   }
 });
 
