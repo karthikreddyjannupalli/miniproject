@@ -1,11 +1,10 @@
 import React from 'react'
-import pic from './110567.jpg'
 function Content(){
     return(<div>
         <div style={{height:400,marginLeft:25,width:1200,backgroundColor:"transparent"}}>
     <div style={{height:300,width:400,backgroundColor:"chocolate",float:"left"}}>
 <h4 style={{fontSize:50,paddingTop:80}}> LEARN </h4>
-{pic}
+
 
     </div>
 
