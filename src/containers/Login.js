@@ -40,9 +40,9 @@ export default class Login extends Component{
     <h3 style={{color:"white",fontFamily:"sans-serif",textShadow: "2px 2px 4px #000000"}}>Login </h3>
     <br/>
   <div class="form-group">
-  <label for="exampleInputEmail1">UserName</label>
+  <h4 style={{color:"#eeeeee"}}>User Name</h4>
   <input type="text" class="form-control"value={this.state.username} onChange={this.onChangeUserName} id="uname" aria-describedby="" placeholder="UserName"/>
-    <label for="exampleInputPassword1">Password</label>
+  <h4 style={{color:"#eeeeee"}}>Password</h4>
     <input type="password" class="form-control" value={this.state.password} onChange={this.onChangePassword} id="exampleInputPassword1" placeholder="Password"/>
   </div>
   <button type="submit" class="btn btn-primary">Login</button>

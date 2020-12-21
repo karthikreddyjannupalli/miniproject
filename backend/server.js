@@ -21,7 +21,7 @@ io.on('connection', (socket) => {
   let lb=db.collection('leaderboards')
   console.log(lb)
  setInterval(
-  ()=>{lb.find().limit(10).sort({rank:1}).toArray(function(err,res){
+  ()=>{lb.find().limit(10).sort({"points":-1}).toArray(function(err,res){
     if(err){
       console.log("ERROR RETRIEVING DATA")
       throw err
