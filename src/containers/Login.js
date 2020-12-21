@@ -37,7 +37,7 @@ export default class Login extends Component{
         return(
             <div className="create">
 <form className="creaform" onSubmit={this.onSubmit}  >
-    <h3 style={{color:"royalblue"}}>Login </h3>
+    <h3 style={{color:"white",fontFamily:"sans-serif",textShadow: "2px 2px 4px #000000"}}>Login </h3>
     <br/>
   <div class="form-group">
   <label for="exampleInputEmail1">UserName</label>

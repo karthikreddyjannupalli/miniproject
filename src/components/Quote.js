@@ -27,18 +27,11 @@ export default function QuoteSection(){
 
     }  
     return (
-        <div className="container" >
-            <div className="row" style={{width:"60%",height:"80%"}}>
-                <div className="offset-3 col">
-                    <section style={{height: '100px'}}>
-                        <h1>CODEX FACT</h1>
-                        <br/>
-                        <h1>                    
-                           {quote()} 
-                        </h1>
-                    </section>
-                </div>
-            </div>
-        </div>
-    );
+        <div className="jumbotron" >
+        <h1 style={{fontSize:40,fontFamily:"serif",color:"#4a4e4d"}}>CODEX FACT..!!</h1>
+        <br/><br/><br/><br/>
+    <p style={{fontFamily:"revert",fontSize:23, wordWrap: "break-word"}}>{quote()}</p>
+     
+      </div>
+        );
 }
