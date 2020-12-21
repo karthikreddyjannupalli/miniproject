@@ -86,6 +86,7 @@ class AdminDashboard extends Component{
                       tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
                       tasks={this.state.assignments}
                       userType={user.userType}
+                      handleContest={this.props.handleContest}
                     />
                   )
                 },
@@ -98,6 +99,7 @@ class AdminDashboard extends Component{
                       tasksIndexes={Array.from({length: this.state.contest.length}, (_, index) => index )}
                       tasks={this.state.contest}
                       userType={user.userType}
+                      handleContest={this.props.handleContest}
                     />
                   )
                 },
@@ -110,6 +112,7 @@ class AdminDashboard extends Component{
                         tasksIndexes={Array.from({length: this.state.analysis.length}, (_, index) => index)}
                         tasks={this.state.analysis}
                         userType={user.userType}
+                        handleContest={this.props.handleContest}
                       />
                     )
                   }

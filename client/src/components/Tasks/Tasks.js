@@ -16,11 +16,14 @@ import Close from "@material-ui/icons/Close";
 import Check from "@material-ui/icons/Check";
 // core components
 import styles from "../../assets/jss/material-dashboard-react/components/tasksStyle.js";
+import { Link, useHistory } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles(styles);
 
 export default function Tasks(props) {
   console.log(props);
+  var History = useHistory();
   const classes = useStyles();
   const [checked, setChecked] = React.useState([...props.checkedIndexes]);
   const handleToggle = value => {
@@ -33,6 +36,7 @@ export default function Tasks(props) {
     }
     setChecked(newChecked);
   };
+  console.log(props);
   const { tasksIndexes, tasks, rtlActive , userType } = props;
   const tableCellClasses = classnames(classes.tableCell, {
     [classes.tableCellRTL]: rtlActive
@@ -40,11 +44,11 @@ export default function Tasks(props) {
   return (
     <Table className={classes.table}>
       <TableBody>
-        {tasksIndexes.map(value => (
+        {tasksIndexes.map((e,value)=> (
           <TableRow key={value} className={classes.tableRow}>
             <TableCell className={tableCellClasses}>
             </TableCell>
-            <TableCell className={tableCellClasses}><h5>{tasks[value]}</h5></TableCell>
+            <TableCell className={tableCellClasses}><h5><a href={`/contest/${value}`}>{tasks[value]} </a></h5></TableCell>
             {userType==="admin"?(<TableCell className={classes.tableActions}>
               <Tooltip
                 id="tooltip-top"

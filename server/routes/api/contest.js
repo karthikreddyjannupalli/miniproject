@@ -42,13 +42,22 @@ router.post("/getcontests",(req,res)=>{
    var contestNames = [];
    CONTEST.find().then(response=>{
       console.log(response);
-      contestNames.push([response[0].contestdate,response[0].contestname])
+      contestNames.push([response[0].contestdate,response[0].contestname,response[0].contestId]);
       contestNames.sort();
       res.status(200).send(contestNames)})
    .catch(err=>{
       res.status(400).send(err);
    });
 });
+
+router.post("/contest",(req,res)=>{
+   var contest;
+   CONTEST.findOne({contestname: req.body.contestname})
+   .then(response=>{
+      contest=response;
+      res.status(200).send(contest);
+   })
+})
 
 
 module.exports = router;

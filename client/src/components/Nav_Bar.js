@@ -35,7 +35,7 @@ class NavBar extends Component {
       <div className="navi">
         <Navbar className="" expand="md">
           <div className="container">
-            <img className="logo" src={"assets/logo/default.png"} alt="Logo" />
+            <img className="logo" src={require("../assets/css/default.png")} alt="Logo" />
             <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav className="menu ml-auto" navbar>

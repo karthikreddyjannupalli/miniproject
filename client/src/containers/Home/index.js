@@ -80,6 +80,7 @@ return (
                     tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
                     tasks={this.state.assignments}
                     userType={this.props.auth.userType}
+                    handleContest={this.props.handleContest}
                   />
                 )
               },
@@ -92,6 +93,7 @@ return (
                     tasksIndexes={Array.from({length: this.state.assignments.length}, (_, index) => index)}
                     tasks={this.state.contest}
                     userType={this.props.auth.userType}
+                    handleContest={this.props.handleContest}
                   />
                 )
               }
