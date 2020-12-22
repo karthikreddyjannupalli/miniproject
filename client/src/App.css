@@ -320,6 +320,23 @@ color: darkslategray
   }
 
   /* ########################End of Footer ######################### */
+  .about{
+    background-image: url(./containers/cover.png);
+    height: 550px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+  background-position: right;
+  background-position-x: 480px ;
+  background-color: rgb(225, 228, 236)
+  }
+  .jumbotron{
+    margin-left: 20px;
+    width: 40%;
+    float: left;
+    background-color: rgba(239, 241, 243, 0.863);
+    box-shadow: 0 4px 8px 0 rgba(0.3, 0, 0, 0.2), 0 6px 20px 0 rgba(0.4, 0, 0, 0.19);;
+    height: 360px;
+  }
   
 
   /* ########################LEADERBOARD ######################### */
@@ -332,6 +349,12 @@ color: darkslategray
     background-color:rgba(35, 35, 131, 0.667);
     border: #617583;
     border-style: solid;
+  }
+  .carousel {
+    text-align: center;
+    background-image: url("../src//assets/img/110567.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
   
