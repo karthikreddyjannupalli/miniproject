@@ -28,16 +28,21 @@ app.use(passport.initialize());
 // Passport config
 require("./middleware/passport")(passport);
 // Routes
-setInterval(()=>{
+
 io.on('connection', (socket) => {
-lb=db.collection('leaderboards')
-//console.log(lb)
-lb.find({},{limit:10}).sort({"points":-1}).toArray(function(err,res){
-  socket.emit('get',res) 
-}) 
+  console.log('a user connected');
+  let lb=db.collection('leaderboards')
+  console.log(lb)
+ setInterval(
+  ()=>{lb.find().limit(10).sort({"points":-1}).toArray(function(err,res){
+    if(err){
+      console.log("ERROR RETRIEVING DATA")
+      throw err
+    }
+    socket.emit('get',res)
+  })},1000)
 }
-)}
-,5000);
+);
 app.use("/api/users", users);
 app.use("/api/editor", editor);
 app.use("/api/contest",contest);
