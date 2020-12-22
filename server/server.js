@@ -28,15 +28,16 @@ app.use(passport.initialize());
 // Passport config
 require("./middleware/passport")(passport);
 // Routes
-
+setInterval(()=>{
 io.on('connection', (socket) => {
-lb=db.collection('results')
-console.log(lb)
-lb.find({},{limit:2}).sort({"points":-1}).toArray(function(err,res){
+lb=db.collection('leaderboards')
+//console.log(lb)
+lb.find({},{limit:10}).sort({"points":-1}).toArray(function(err,res){
   socket.emit('get',res) 
 }) 
 }
-);
+)}
+,5000);
 app.use("/api/users", users);
 app.use("/api/editor", editor);
 app.use("/api/contest",contest);

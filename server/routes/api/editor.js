@@ -4,6 +4,7 @@ const hackerearth = require("hackerearth-node");
 const axios = require("axios");
 const Contest = require("../../models/CONTEST");
 const RESULT = require("../../models/RESULT");
+const LEADERBOARD = require("../../models/LEADERBOARD");
 var time_limits={
     "JAVASCRIPT_NODE": 10,
     "C": 1,
@@ -88,13 +89,28 @@ router.post("/runtestcases",(req,res)=>{
                                         console.log(use);
                                         if(use.length===0){
                                            const result= new RESULT({
+                                                username: req.body.auth.user.name,
                                                 user: req.body.auth.user.id,
                                                 contestname: req.body.contest,
                                                 questionno: 1,
                                                 question: new Array(req.body.question),
                                                 points: 100,
                                             })
-                                            result.save();                                        }
+                                            result.save(); 
+                                            LEADERBOARD.find({username: req.body.auth.user.name}).then((r)=>{
+                                                console.log(r);
+                                                if(r.length===0){
+                                                    const lb = new LEADERBOARD({
+                                                        username: req.body.auth.user.name,
+                                                        points: 100
+                                                    });
+                                                    lb.save();
+                                                }else{
+                                                    console.log(r[0].points+100);
+                                                    console.log(req.body.auth.user.name);
+                                                    LEADERBOARD.update({username: req.body.auth.user.name},{$set:{points: r[0].points+100}}).then(re=>{console.log(re)});
+                                                }
+                                            })                                      }
                                         else{
                                         var r =use[0].question.find((q)=>{
                                             return q===req.body.question;
@@ -104,6 +120,18 @@ router.post("/runtestcases",(req,res)=>{
                                             RESULT.update({user: use[0].user,contestname: use[0].contestname},{$push: {question: req.body.question}}).then(res=>console.log(res));
                                             RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {questionno: use[0].questionno+1}}).then(res=>console.log(res));
                                             RESULT.update({user: use[0].user,contestname: use[0].contestname},{$set: {points: 100*(use[0].questionno+1)}}).then(res=>console.log(res));
+                                            LEADERBOARD.find({username: req.body.auth.user.name}).then((r1)=>{
+                                                console.log(r1);
+                                                if(r1.length===0){
+                                                    const lb = new LEADERBOARD({
+                                                        username: req.body.auth.user.name,
+                                                        points: 100
+                                                    });
+                                                    lb.save();
+                                                }else{
+                                                    LEADERBOARD.update({username: req.body.auth.user.name},{$set:{points: r1[0].points+100}}).then(re=>console.log(re));
+                                                }
+                                            });
                                         }
                                     }
                                     })

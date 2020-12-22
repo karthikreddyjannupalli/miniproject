@@ -10,18 +10,18 @@ class Leaderboard extends React.Component {
       .fill(0)
       .map((z, i) => {
         var id = data[i].userId,
-          un = data[i].userName,
+          un = data[i].userName.split(' ')[1]||data[i].userName.split(' ')[0],
           qs= data[i].questions,
           tm=data[i].time,
-          en = data[i].earnings,
-          oc = () => {
+          en = data[i].earnings;
+          /*oc = () => {
             window.open(
               "http://www.rewards1.com/forums-profile.php?user_id=" + id,
               "_blank"
             );
-          };
+          };*/
         return (
-          <li key={i} onClick={oc}>
+          <li key={i} >
             <img
               src={"http://www.rewards1.com/uploads/avatar/" + id + ".jpg"}
               onError={(e) =>
@@ -70,14 +70,17 @@ class LeaderboardMain extends React.Component {
     socket.on('get',(lb)=>{
       console.log("DATA")
       console.log(lb)
+      const t=lb.map((lb1)=>{
+        return {userId: lb1.user, userName: lb1.username, questions: 3 , time: '1 Hr' , earnings: lb1.points}
+      })
       setTimeout(
      () =>
-      this.update([
- 
-        { userId: lb[0].user, userName: lb[0].username, questions: 3 , time: '1 Hr' , earnings: lb[0].points },
-        { userId: lb[1].user, userName: lb[1].username, questions: 3 , time: '1 Hr' , earnings: lb[1].points },
+      this.update(t
+        
+        //{ userId: lb[0].user, userName: lb[0].username, questions: 3 , time: '1 Hr' , earnings: lb[0].points },
+        //{ userId: lb[1].user, userName: lb[1].username, questions: 3 , time: '1 Hr' , earnings: lb[1].points },
       
-      ]),
+      ),
         500
       );  
     })
