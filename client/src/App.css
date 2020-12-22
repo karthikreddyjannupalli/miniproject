@@ -343,6 +343,13 @@ color: darkslategray
   .editor{
     height: 1000px;
   }
+  .log{
+    width: 100%;
+    height: 600px;
+    background-image: url('./containers/Login/wp4447999-spaceship-minimalist-wallpapers.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
   #edit{
     box-shadow: 0 4px 8px 0 rgba(78, 105, 141, 0.2);
   transition: 0.3s;

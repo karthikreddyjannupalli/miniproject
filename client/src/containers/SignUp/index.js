@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/auth.actions";
 import classnames from "classnames";
-import { MenuItem, Select } from "@material-ui/core";
+import { Button, MenuItem, Select } from "@material-ui/core";
 class Register extends Component {
   constructor() {
     super();
@@ -52,12 +52,13 @@ this.props.registerUser(newUser, this.props.history);
   };
 render() {
     const { errors } = this.state;
-return (
-      <div className="container">
+return (<div className="log">
+      <br /> <br />
+      <div className="container" style={{backgroundColor:"white", width:400,marginLeft:20,paddingLeft:10}}>
         <div className="row">
           <div className="col s8 offset-s2">
             <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
+              <i className="material-icons left"></i> Back to
               home
             </Link>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
@@ -69,7 +70,7 @@ return (
               </p>
             </div>
             <form noValidate onSubmit={this.onSubmit}>
-              <div >
+              <div className="input-field col sm-12">
                 <input
                   onChange={this.onChange}
                   value={this.state.firstname}
@@ -112,6 +113,7 @@ return (
                 <label htmlFor="email">Email</label>
                 <span>{errors.email}</span>
               </div>
+              <div className="input-field col s12">
               <Select
               labelId="demo-simple-select-label"
               id="userType"
@@ -122,6 +124,7 @@ return (
             <MenuItem value={"admin"}>admin</MenuItem>
             <MenuItem value={"student"}>student</MenuItem>
           </Select>
+          </div>
               <div className="input-field col s12">
                 <input
                   onChange={this.onChange}
@@ -151,23 +154,26 @@ return (
                 <span >{errors.password2}</span>
               </div>
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-                <button
+                <Button
                   style={{
                     width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginTop: "1rem"
                   }}
+                  variant="contained"
                   type="submit"
                   className="btn btn-large waves-effect waves-light hoverable blue accent-3"
                 >
                   Sign up
-                </button>
+                </Button>
               </div>
             </form>
+            <br />
+            <br />
           </div>
         </div>
-      </div>
+      </div></div>
     );
   }
 }
