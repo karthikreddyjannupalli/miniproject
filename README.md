@@ -10,3 +10,14 @@ Moreover, this project is also intended to provide an assistance
 to faculty in evaluating students programming assignments. 
 Basically, it’s a tedious task to evaluate all the assignments of 
 students and its hard to see each line of the code written.
+
+##TECHNOLOGY STACK INVOLVED:
+#FRONT END:
+➢React Framework
+➢Bootstrap
+#BACKEND:
+➢MongoDB
+➢ExpressJS
+➢NodeJS
+➢HackerEarth API
+➢Socket io & Socket-io-client
