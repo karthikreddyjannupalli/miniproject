@@ -1,4 +1,4 @@
-# miniproject
+# MINIPROJECT
 The Product we made is basically to provide a learning 
 environment that consolidates students programming abilities 
 and learn important algorithms by applying it on practical 
@@ -35,4 +35,7 @@ students and its hard to see each line of the code written.
 ### Contest Page
 ![image](https://user-images.githubusercontent.com/61978190/110632867-204b8b80-81ce-11eb-9f21-14ee561e0e8b.png)
 
-
+# Usage
+Require 
+- hackearthkey
+- mongo key
