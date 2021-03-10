@@ -28,4 +28,11 @@ students and its hard to see each line of the code written.
 ![image](https://user-images.githubusercontent.com/61978190/110614701-9c3ad900-81b8-11eb-973d-41bdfb5fb14f.png)
 ### Editor
 ![image](https://user-images.githubusercontent.com/61978190/110615347-56324500-81b9-11eb-929f-f440607ca6c9.png)
-### 
+### User and Admin DashBoard
+![image](https://user-images.githubusercontent.com/61978190/110632461-a7e4ca80-81cd-11eb-872e-6f2fa3d48e26.png)
+### Socket based realtime Leaderboard
+![image](https://user-images.githubusercontent.com/61978190/110632592-cf3b9780-81cd-11eb-938e-65825ef38caf.png)
+### Contest Page
+![image](https://user-images.githubusercontent.com/61978190/110632867-204b8b80-81ce-11eb-9f21-14ee561e0e8b.png)
+
+
