@@ -27,6 +27,10 @@ const UserSchema = new mongoose.Schema({
   userType: {
     type: String,
     default: "student"
+  },
+  status: {
+    type: String,
+    default: "pending"  
   }
 });
 module.exports = User = mongoose.model("users", UserSchema);

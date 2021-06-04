@@ -67,7 +67,7 @@ router.post("/runtestcases",(req,res)=>{
                 })
                 console.log(inx);
                 var file1=Buffer.from(cont[0].question[inx].testcasefile1, 'base64').toString('ascii');
-                var file2=Buffer.from(cont[0].question[inx].testcasefile2, 'base64').toString('ascii');
+                var file2=Buffer.from(cont[0].question[inx].testcasefile2, 'base64').toString('ascii').trim();
 
                 config.time_limit=time_limits[req.body.lang];  //your time limit in integer
                 config.memory_limit=memory_limits[req.body.lang];  //your memory limit in integer
@@ -81,8 +81,14 @@ router.post("/runtestcases",(req,res)=>{
                     }
                     if(response){
                         var ret = JSON.parse(response); 
-                        console.log(ret.run_status.output,file2);
-                        if(ret.run_status.output === file2){
+                        var res1=ret.run_status.output.trim().split('\n')
+                        var res2=file2.trim().split('\r\n');
+                        var flag=1;
+                        for(let i=0;i<res1.length;i++){
+                            if(res1[i]!=res2[i]) flag=0;
+                        }
+                        console.log(res1,res2);
+                        if(flag===1){
                             ret.codingAssignmentStatus="ACCEPTED";
                             RESULT.find({contestname: req.body.contest,user: req.body.auth.user.id})
                                     .then((use)=>{
