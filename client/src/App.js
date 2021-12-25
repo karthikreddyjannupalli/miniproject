@@ -21,6 +21,7 @@ import ContestHome from "./containers/contestHome";
 import AdminRoute from "./components/AdminRoute";
 import Create from "./containers/Create";
 import Axios from "axios";
+import ActivationEmail from "./containers/activate";
 if (localStorage.jwtToken) {
   const token = localStorage.jwtToken;
   setAuthToken(token);
@@ -55,6 +56,7 @@ class App extends Component {
     //return <ContestHome />//contestname={contestname} />
     return (contestname ? <ContestHome contestname={contestname} /> : <div>NOTFOUND</div> )
   }
+
   handleQuestion= (value) =>{
     this.setState({
       questionName: value
@@ -65,7 +67,6 @@ class App extends Component {
     .then(res=>res.data)
     .then((res)=>{
       let Names=[];
-      console.log(res);
       res.map((contestData,index)=>{
       //if(contestData[0] < new Date())
         Names.push(contestData[1]);
@@ -73,7 +74,7 @@ class App extends Component {
       this.setState({
         contest: Names,
       })
-      console.log(this.state.contest[0]);
+      //console.log(this.state.contest[0]);
     })
     .catch((err)=>{
         console.log(err);
@@ -93,6 +94,7 @@ class App extends Component {
             <Route path="/aboutus"  component={About} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={SignUp}/>
+            <Route path="/activate/:key" component={props=><ActivationEmail {...props}/>} />
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute exact path="/contest/:id" component= {routerProps=> this.handleContest(routerProps)} />
             <AdminRoute path="/admindashboard" component={AdminDashboard} />

@@ -12,7 +12,7 @@ const { db } = require("./models/User");
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
 
-
+app.use('/', express.static('public'));
 // Initialising Bodyparser middleware
 app.use(
   bodyParser.urlencoded({

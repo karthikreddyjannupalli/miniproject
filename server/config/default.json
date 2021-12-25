@@ -1,4 +1,10 @@
 {
     "mongoURI": "mongodb+srv://codeXCreator:codexvce@cluster0.oijsb.mongodb.net/codeXdata?retryWrites=true&w=majority",
-    "secretOrKey": "secret"
+    "secretOrKey": "secret",
+    "ACT_TOKEN" : "BYN%3kxG^aY%D%LPsb^BkqWg!N!tTz4dj6WWLh!R2cp%!a$=E",
+    "CLIENT_URL": "http://localhost:3000",
+    "MAILING_SERVICE_CLIENT_ID": "545828556863-iku7uoadge78bbr4liqbnqjq1dqcnilj.apps.googleusercontent.com",
+    "MAILING_SERVICE_CLIENT_SECRET":"vZgmhOl7FvFypMLlkHOKMjaZ",
+    "MAILING_SERVICE_REFRESH_TOKEN":"1//04qk6fu_BWVQiCgYIARAAGAQSNwF-L9IrxFKTHIJHFV0IJyzr4Qc6ag-sLF0D_JRFLoAj5jhUsWcdozHyoJb8VueGXs6ns9NFMrk",
+    "SENDER_MAILING_ADDRESS":"codexlyc@gmail.com"
 }
